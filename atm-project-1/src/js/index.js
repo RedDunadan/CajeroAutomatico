@@ -52,20 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('transaction-modal');
     const transactionForm = document.getElementById('transaction-form');
     const modalTitle = document.getElementById('modal-title');
-
-    // Create and add login form
-    const loginSection = document.createElement('div');
-    loginSection.innerHTML = `
-        <div id="login-form" class="login-section">
-            <h2>ATM Login</h2>
-            <form>
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" id="login-btn">Login</button>
-            </form>
-        </div>
-    `;
-    document.body.insertBefore(loginSection, document.body.firstChild);
+    const loginContainer = document.getElementById('login-container');
+    const atmContainer = document.getElementById('atm-container');
+    const loginForm = document.getElementById('login-form');
 
     // Initial setup
     document.querySelector('.atm-controls').style.display = 'none';
@@ -98,7 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (user) {
             currentUser = user;
-            document.getElementById('login-form').style.display = 'none';
+            loginContainer.style.display = 'none';
+            atmContainer.style.display = 'block';
+            // Show the controls when logged in
             document.querySelector('.atm-controls').style.display = 'block';
             updateBalanceDisplay();
             showMessage(`¡Bienvenido ${username}!`);
@@ -109,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event Listeners
-    loginSection.querySelector('form').addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
@@ -187,9 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
     exitBtn.addEventListener('click', () => {
         if (confirm('¿Está seguro que desea salir?')) {
             currentUser = null;
-            document.getElementById('login-form').style.display = 'block';
-            document.querySelector('.atm-controls').style.display = 'none';
-            balanceDisplay.style.display = 'none';
+            loginContainer.style.display = 'flex';
+            atmContainer.style.display = 'none';
+            document.querySelector('.atm-controls').style.display = 'none'; // Hide controls on logout
+            balanceDisplay.style.display = 'none'; // Hide balance display
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             showMessage('Sesión finalizada. ¡Gracias por usar nuestro cajero!');

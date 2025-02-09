@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATM Simulator</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Cajero Automático</h1>
-        <div id="atm-display" class="atm-display">
-            <div id="message-display" class="message" style="display: none;"></div>
-            <div id="balance-display" style="display: none;">Saldo actual: $0</div>
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h2>Bienvenido al Cajero Automático</h2>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
         </div>
+    </div>
+
+    <div id="atm-container" style="display: none;">
+        <div class="atm-display" id="balance-display"></div>
+        <div id="message-display"></div>
         <div class="atm-controls">
             <button id="check-balance">Consultar Saldo</button>
             <button id="withdraw-money">Retirar Dinero</button>
