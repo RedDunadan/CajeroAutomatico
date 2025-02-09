@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Simulator</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cajero Automático</h1>
+        <div id="atm-display" class="atm-display">
+            <div id="message-display" class="message" style="display: none;"></div>
+            <div id="balance-display" style="display: none;">Saldo actual: $0</div>
+        </div>
+        <div class="atm-controls">
+            <button id="check-balance">Consultar Saldo</button>
+            <button id="withdraw-money">Retirar Dinero</button>
+            <button id="deposit-money">Depositar Dinero</button>
+            <button id="exit">Salir</button>
+        </div>
+    </div>
+    <div id="transaction-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <form id="transaction-form">
+                <input type="number" id="amount-input" placeholder="Monto" step="0.01" required>
+                <button type="submit" id="confirm-transaction">Confirmar</button>
+                <button type="button" id="cancel-transaction">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
