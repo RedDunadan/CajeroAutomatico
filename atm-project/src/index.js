@@ -1,3 +1,5 @@
+// Main JavaScript file for the ATM application
+
 // Initial account balance
 let balance = 1000;
 
